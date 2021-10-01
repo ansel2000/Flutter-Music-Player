@@ -84,36 +84,7 @@ class _MusicPlayer extends State<MusicPlayer> {
   Duration duration = new Duration();
   Duration position = new Duration();
 
-  void playMusic(String url) async {
-    if (isPlaying && currentSong != url) {
-      audioPlayer.pause();
-      int result = await audioPlayer.play(url);
-      if (result == 1) {
-        setState(() {
-          currentSong = url;
-        });
-      }
-    } else if (!isPlaying) {
-      int result = await audioPlayer.play(url);
-      if (result == 1) {
-        setState(() {
-          isPlaying = true;
-          btnIcon = Icons.play_arrow;
-        });
-      }
-    }
-    audioPlayer.onDurationChanged.listen((event) {
-      setState(() {
-        duration = event;
-      });
-    });
-
-    audioPlayer.onAudioPositionChanged.listen((event) {
-      setState(() {
-        position = event;
-      });
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
